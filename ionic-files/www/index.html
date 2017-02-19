@@ -73,7 +73,7 @@
               series: [{color: '#499273'}, {color: '#D4CB6A'}, {color: '#8F78AD'}, {color: '#D4886A'}]
           };
 
-            chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
 
             chart.draw(data, options);
           }

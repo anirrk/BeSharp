@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BSharp</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+        </script>
+        <script src = "assets/js/script.js"></script>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var raw_data = [];
+
+            for (var i = 0; i < 500; i++) {
+                var theta = Math.random()*2*Math.PI;
+                var r = Math.random()*100*Math.atan(theta);
+
+                raw_data.push([r,theta]);
+            }
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Hour of Day');
+            data.addColumn('number', 'Well Rested');
+            data.addColumn('number', 'Getting Tired');
+            data.addColumn('number', 'Recommend Sleeping');
+            data.addColumn('number', 'Sleep Deprived');
+
+            //Boundary scores separating the categories.
+            var b0 = 0;
+            var b1 = 25;
+            var b2 = 50;
+            var b3 = 75;
+            var b4 = 100;
+
+            // Assign each data point to a category/color series based on sleep score.
+            for (var i = 0; i < raw_data.length; i++) {
+                var r = raw_data[i][0];
+                var x = raw_data[i][0]*Math.cos(raw_data[i][1]);
+                var y = raw_data[i][0]*Math.sin(raw_data[i][1]);
+
+                if (r >= b0 && r < b1) {
+                    data.addRows([[x, y, null, null, null]]);
+                } else if (r >= b1 && r < b2) {
+                    data.addRows([[x, null, y, null, null]]);
+                } else if (r >= b2 && r < b3) {
+                    data.addRows([[x, null, null, y, null]]);
+                } else if (r >= b3 && r < b4) {
+                    data.addRows([[x, null, null, null, y]]);
+                }
+            }
+
+            var options = {
+              hAxis: {title: 'Age', minValue: -100, maxValue: 100},
+              vAxis: {title: 'Weight', minValue: -100, maxValue: 100},
+              legend: {position: 'top', textStyle: {color: 'black', fontSize: 16}, maxLines: 4},
+              series: [{color: '#499273'}, {color: '#D4CB6A'}, {color: '#8F78AD'}, {color: '#D4886A'}],
+              backgroundColor: '#1F1C1C'
+          };
+
+            var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+          }
+        </script>
+    </head>
+    <body>
+        <div id="outer-container">
+            <div class="container" id="container2">
+                <div style="margin: 20px;">
+                <div id="logo2">
+                    <img src="./assets/img/bsharp.png">
+                </div>
+                <div id="title2">BSharp</div>
+            </div>
+                <div id="chart_div" style="width: 50vw; height: 50vw; margin: 0 auto;"></div>
+
+            </div>
+        </div>
+    </body>
+</html>
