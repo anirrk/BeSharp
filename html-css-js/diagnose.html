@@ -20,7 +20,21 @@
                     <img src="./assets/img/bsharp.png">
                 </div>
                 <div id="title2">BSharp</div>
-                <input type="file" accept="image/*;capture=camera">
+<!-- 
+<form action="http://localhost:3000/upload" name="upload" enctype="multipart/form-data" method = "post">
+    <input  type="file" name="theFile" />                      
+    <button id="uploadSubmitter" class="btn btn-primary btn-large" type="submit">Finished</button>
+  </form> -->
+
+                <form method="post" enctype="multipart/form-data" action="http://localhost:3000/upload">
+    <input type="file" name="file">
+    <input type="submit" value="Submit">
+</form> 
+
+                <!-- <form method="POST" enctype="multipart/form-data"  action="http://localhost:3000/upload">
+                    <input type="file" accept="image/*;capture=camera">
+                    <input type="submit" value="Upload">
+                </form> -->
             </div>
         </div>
     </body>
