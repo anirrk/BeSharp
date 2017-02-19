@@ -1,8 +1,16 @@
 var express = require('express')
+var fileUpload = require('express-fileupload');
 var app = express()
 
-app.get('/', function (req, res) {
+app.use(fileUpload());
+
+// upload endpoint
+
+app.post('/', function (req, res) {
   'use strict';
+	//if(!req.files) {
+//		return res.status(400);
+	//}
 
 	const VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 	const fs = require('fs');
@@ -14,7 +22,7 @@ app.get('/', function (req, res) {
 
 	const params = {
 	  // must be a .zip file containing images
-	  images_file: fs.createReadStream('./selfie.JPG'),
+	  images_file: req.files.data,
 	  classifier_ids : ["fruit_1999080847"],
 	  threshold : 0.0
 	};
@@ -29,3 +37,4 @@ app.get('/', function (req, res) {
 })
 
 app.listen(3000)
+
