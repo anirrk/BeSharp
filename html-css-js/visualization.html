@@ -63,7 +63,9 @@
               series: [{color: '#499273'}, {color: '#D4CB6A'}, {color: '#8F78AD'}, {color: '#D4886A'}],
               backgroundColor: '#1F1C1C',
               title: 'Visualization of Sleep Patterns',
-              titleTextStyle: {color: 'white', fontSize: 24}
+              titleTextStyle: {color: 'white', fontSize: 24},
+              fontName: 'Lora'
+
           };
 
             var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
@@ -89,9 +91,9 @@
             <div class="chart-with-overlay">
                 <div id="chart_div" style="width: 50vw; height: 50vw; margin: 0 auto;"></div>
                 <div class="overlay-axes">
-                    <div style="font-family:'Arial'; font-size: 18px; color: white;"><b><u>Radial Axes:</b></u></div>
-                    <div style="font-family:'Arial'; font-size: 18px; color: white;">Sleep Score &rarr;</div>
-                    <div style="font-family:'Arial'; font-size: 18px; color: white;">Hour of Day &#8634;</div>
+                    <div style="font-family:'Lora'; font-size: 18px; color: white;"><b><u>Radial Axes:</b></u></div>
+                    <div style="font-family:'Lora'; font-size: 18px; color: white;">Sleep Score &rarr;</div>
+                    <div style="font-family:'Lora'; font-size: 18px; color: white;">Hour of Day &#8634;</div>
                 </div>
             </div>
         </div>

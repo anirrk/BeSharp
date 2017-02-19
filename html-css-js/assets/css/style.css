@@ -125,3 +125,12 @@ a {
    right: 10%;
    text-align: right;
 }
+
+#upload {
+	margin: 20px;
+	color: white;
+}
+
+#upload form {
+	margin-top: 20px;
+}
