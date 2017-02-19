@@ -2,6 +2,30 @@ var express = require('express')
 var fileUpload = require('express-fileupload');
 var app = express()
 
+
+app.post('/upload', function (req, res) {
+	// console.log(req);
+	// console.log(res);
+	console.log(req.files);
+
+	    var tempPath = req.files.file.path,
+	        targetPath = path.resolve('./uploads/image.png');
+	    if (path.extname(req.files.file.name).toLowerCase() === '.png') {
+	        fs.rename(tempPath, targetPath, function(err) {
+	            if (err) throw err;
+	            console.log("Upload completed!");
+	        });
+	    } else {
+	        fs.unlink(tempPath, function () {
+	            if (err) throw err;
+	            console.error("Only .png files are allowed!");
+	        });
+	    }
+	    // ...
+	});
+
+
+
 app.get('/', function (req, res) {
   'use strict';
 
@@ -29,5 +53,6 @@ app.get('/', function (req, res) {
 	});
 })
 
+app.use(express.bodyParser({uploadDir:'.'}));
 app.listen(3000)
 
