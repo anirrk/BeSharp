@@ -34,9 +34,9 @@
 
             //Boundary scores separating the categories.
             var b0 = 0;
-            var b1 = 25;
-            var b2 = 50;
-            var b3 = 75;
+            var b1 = 60;
+            var b2 = 75;
+            var b3 = 85;
             var b4 = 100;
 
             // Assign each data point to a category/color series based on sleep score.
@@ -57,8 +57,8 @@
             }
 
             var options = {
-              hAxis: {title: 'Age', minValue: -100, maxValue: 100, textStyle: {color: 'white'}, titleTextStyle: {color: 'white'}, gridlines: {count: 0}, textPosition: 'out'},
-              vAxis: {title: 'Weight', minValue: -100, maxValue: 100, textStyle: {color: 'white'}, titleTextStyle: {color: 'white'}, gridlines: {count: 0}},
+              hAxis: {minValue: -100, maxValue: 100, textStyle: {color: 'white'}, gridlines: {count: 0}, textPosition: 'out'},
+              vAxis: {minValue: -100, maxValue: 100, textStyle: {color: 'white'}, gridlines: {count: 0}},
               legend: {position: 'top', textStyle: {color: 'white', fontSize: 16}, maxLines: 4},
               series: [{color: '#499273'}, {color: '#D4CB6A'}, {color: '#8F78AD'}, {color: '#D4886A'}],
               backgroundColor: '#1F1C1C',
@@ -88,8 +88,10 @@
             </div>
             <div class="chart-with-overlay">
                 <div id="chart_div" style="width: 50vw; height: 50vw; margin: 0 auto;"></div>
-                <div class="overlay-r">
+                <div class="overlay-axes">
+                    <div style="font-family:'Arial'; font-size: 18px; color: white;"><b><u>Radial Axes:</b></u></div>
                     <div style="font-family:'Arial'; font-size: 18px; color: white;">Sleep Score &rarr;</div>
+                    <div style="font-family:'Arial'; font-size: 18px; color: white;">Hour of Day &#8634;</div>
                 </div>
             </div>
         </div>

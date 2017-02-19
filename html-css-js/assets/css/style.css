@@ -116,11 +116,12 @@ a {
 
 .chart-with-overlay {
 	position: relative;
+	display: inline-block;
 }
 
-.overlay-r {
-       position: absolute;
-       top: 0;   /* chartArea top  */
-       left: 0; /* chartArea left */
-	   border: solid 1px red;
+.overlay-axes {
+   position: absolute;
+   bottom: 10%;
+   right: 10%;
+   text-align: right;
 }
