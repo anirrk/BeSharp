@@ -4,10 +4,29 @@ body {
 	text-align: center;
 }
 
+#back {
+	position: fixed;
+	z-index: 100;
+	top: 55px;
+	left: 75px;
+	border: solid 1px white;
+	padding: 10px;
+	border-radius: 5px;
+	filter: opacity(0.3);
+	transition: 0.25s;
+}
+
+#back:hover {
+	filter: none;
+}
+
+#back img {
+	width: 30px;
+}
+
 #outer-container {
 	height: 100%;
 	width: 100%;
-	display: fixed;
 	z-index: 0;
 }
 
