@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var raw_data = [];
+
+            for (var i = 0; i < 500; i++) {
+                var theta = Math.random()*2*Math.PI;
+                var r = Math.random()*100*Math.atan(theta);
+
+                raw_data.push([r,theta]);
+            }
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Hour of Day');
+            data.addColumn('number', 'Well Rested');
+            data.addColumn('number', 'Getting Tired');
+            data.addColumn('number', 'Recommend Sleeping');
+            data.addColumn('number', 'Sleep Deprived');
+
+            //Boundary scores separating the categories.
+            var b0 = 0;
+            var b1 = 25;
+            var b2 = 50;
+            var b3 = 75;
+            var b4 = 100;
+
+            // Assign each data point to a category/color series based on sleep score.
+            for (var i = 0; i < raw_data.length; i++) {
+                var r = raw_data[i][0];
+                var x = raw_data[i][0]*Math.cos(raw_data[i][1]);
+                var y = raw_data[i][0]*Math.sin(raw_data[i][1]);
+
+                if (r >= b0 && r < b1) {
+                    data.addRows([[x, y, null, null, null]]);
+                } else if (r >= b1 && r < b2) {
+                    data.addRows([[x, null, y, null, null]]);
+                } else if (r >= b2 && r < b3) {
+                    data.addRows([[x, null, null, y, null]]);
+                } else if (r >= b3 && r < b4) {
+                    data.addRows([[x, null, null, null, y]]);
+                }
+            }
+
+            var options = {
+              hAxis: {title: 'Age', minValue: -100, maxValue: 100},
+              vAxis: {title: 'Weight', minValue: -100, maxValue: 100},
+              legend: {position: 'top', textStyle: {color: 'black', fontSize: 16}, maxLines: 4},
+              series: [{color: '#499273'}, {color: '#D4CB6A'}, {color: '#8F78AD'}, {color: '#D4886A'}]
+          };
+
+            var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+          }
+        </script>
+  </head>
+  <body ng-app="app">
+
+
+              <ion-side-menus>
+
+                <!--This is the menu content for both the left and right side of the ionic view screen.--><!---->
+                <ion-side-menu-content>
+                  <ion-nav-bar class="bar-stable">
+
+                    <!--side menu content for the left side--><!----><!---->
+                    <ion-nav-buttons side="left">
+                      <button menu-toggle="left" class="button button-icon button-clear ion-navicon">
+                      </button>
+                    </ion-nav-buttons>
+                    <!----><!----><!----><!----><!----><!----><!----><!---->
+
+                    <ion-nav-back-button></ion-nav-back-button>
+
+                      <!--side menu content for the left side--><!----><!---->
+                      <ion-nav-buttons side="right">
+                        <button menu-toggle="right" class="button button-icon button-clear">
+                        </button>
+                      </ion-nav-buttons>
+                      <!----><!----><!----><!----><!----><!----><!----><!---->
+
+                  </ion-nav-bar>
+                  <ion-nav-view></ion-nav-view>
+                </ion-side-menu-content>
+                <!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->
+
+
+                <!--This is the content within the left side of the menu-->
+                  <ion-side-menu side="left">
+                    <ion-header-bar class="bar-stable">
+                      <h1 class="title">Menu</h1>
+                    </ion-header-bar>
+                      <ion-content>
+                        <ion-list>
+                          <ion-item menu-close="" href="#/home">home</ion-item>
+                          <ion-item menu-close="" href="#/graph">graph</ion-item>
+                        </ion-list>
+                      </ion-content>
+                </ion-side-menu>
+                <!----><!----><!----><!----><!----><!----><!----><!----><!---->
+
+                <!--This is the content within the Right side of the menu-->
+                <!-- <ion-side-menu side= "right">
+                    <ion-header-bar class="bar-stable">
+                      <h1 class="title">Messages</h1>
+                    </ion-header-bar>
+                      <ion-content>
+                            No new Messages
+                      </ion-content>
+                </ion-side-menu> -->
+                <!----><!----><!----><!----><!----><!----><!----><!----><!---->
+
+              </ion-side-menus>
+    </body>
+  </html>

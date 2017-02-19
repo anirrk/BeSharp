@@ -1,0 +1,96 @@
+body {
+	font-family: 'Lora', serif;
+	background: #1F1C1C;
+	text-align: center;
+}
+
+#outer-container {
+	height: 100%;
+	width: 100%;
+	display: fixed;
+	z-index: 0;
+}
+
+.container {
+	border: solid 5px #E0E0E0;
+	padding: 50px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 10px;
+}
+
+#container1 {
+	position: relative;
+	margin-top: 50px;
+}
+
+#container2 {
+	position: relative;
+	width: 85%;
+	z-index: 1;
+	margin: 25px;
+}
+
+#logo {
+	margin: 10px;
+}
+
+#logo img {
+	height: 200px;
+	border-radius: 10px;
+}
+
+#title {
+	font-size: 72px;
+	letter-spacing: 10px;
+	color: #E0E0E0;
+	padding: 10px;
+}
+
+#logo2 {
+	margin: 10px;
+	display: inline-block;
+}
+
+#logo2 img {
+	height: 80px;
+	border-radius: 10px;
+}
+
+#title2 {
+	font-size: 42px;
+	letter-spacing: 10px;
+	color: #E0E0E0;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: top;
+	transform: translateY(20%);
+}
+
+.btn {
+	border: solid 2px #E0E0E0;
+	margin: 10px 0;
+	padding: 10px 0;
+	letter-spacing: 2px;
+	font-weight: 700;
+	transition: 0.25s;
+}
+
+#btn-diagnose {
+	margin: 20px 0;
+}
+
+#btn-vis {
+	margin-bottom: -20px;
+}
+
+a {
+	text-decoration: none;
+	color: #E0E0E0;
+}
+
+.btn:hover {
+	background: #E0E0E0;
+	color: #1F1C1C;
+}
