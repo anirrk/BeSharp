@@ -113,3 +113,14 @@ a {
 	background: #E0E0E0;
 	color: #1F1C1C;
 }
+
+.chart-with-overlay {
+	position: relative;
+}
+
+.overlay-r {
+       position: absolute;
+       top: 0;   /* chartArea top  */
+       left: 0; /* chartArea left */
+	   border: solid 1px red;
+}
