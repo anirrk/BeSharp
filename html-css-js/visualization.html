@@ -19,8 +19,8 @@
             var raw_data = [];
 
             for (var i = 0; i < 500; i++) {
-                var theta = Math.random()*2*Math.PI;
-                var r = Math.random()*100*Math.atan(theta);
+                var theta = Math.random()*1.75*Math.PI;
+                var r = Math.random()*100 + 60*Math.atan(theta);
 
                 raw_data.push([r,theta]);
             }
@@ -57,11 +57,13 @@
             }
 
             var options = {
-              hAxis: {title: 'Age', minValue: -100, maxValue: 100},
-              vAxis: {title: 'Weight', minValue: -100, maxValue: 100},
-              legend: {position: 'top', textStyle: {color: 'black', fontSize: 16}, maxLines: 4},
+              hAxis: {title: 'Age', minValue: -100, maxValue: 100, textStyle: {color: 'white'}, titleTextStyle: {color: 'white'}, gridlines: {count: 0}, textPosition: 'out'},
+              vAxis: {title: 'Weight', minValue: -100, maxValue: 100, textStyle: {color: 'white'}, titleTextStyle: {color: 'white'}, gridlines: {count: 0}},
+              legend: {position: 'top', textStyle: {color: 'white', fontSize: 16}, maxLines: 4},
               series: [{color: '#499273'}, {color: '#D4CB6A'}, {color: '#8F78AD'}, {color: '#D4886A'}],
-              backgroundColor: '#1F1C1C'
+              backgroundColor: '#1F1C1C',
+              title: 'Visualization of Sleep Patterns',
+              titleTextStyle: {color: 'white', fontSize: 24}
           };
 
             var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
@@ -84,8 +86,13 @@
                 </div>
                 <div id="title2">BSharp</div>
             </div>
+            <div class="chartWithOverlay">
                 <div id="chart_div" style="width: 50vw; height: 50vw; margin: 0 auto;"></div>
-
+                <div class="overlay">
+                    <div style="font-family:'Arial Black'; font-size: 128px;">88</div>
+                    <div style="color: #b44; font-family:'Arial Black'; font-size: 32px; letter-spacing: .21em; margin-top:50px; margin-left:5px;">zombie</div>
+                    <div style="color: #444; font-family:'Arial Black'; font-size: 32px; letter-spacing: .15em; margin-top:15px; margin-left:5px;">attacks</div>
+                  </div>
             </div>
         </div>
     </body>
